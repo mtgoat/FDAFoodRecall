@@ -1,0 +1,17 @@
+
+.productList {
+    margin-top: 5rem;
+    margin-left: 1rem;
+}
+.bigContainer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.addForm{
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+}
+[hidden] {
+    display: none;
+  }
+  

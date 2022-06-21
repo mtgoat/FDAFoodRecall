@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<recallsdata year="2022" >
+	<recalls Brand="Quick Chek" Company="Safeway Fresh Foods">
+		<Brand >Quick Chek</Brand>
+		<Company >Safeway Fresh Foods</Company>
+		<Date>05/28/2022</Date>
+		<ProductDescription>Apple and Peanut Butter Snack Trays</ProductDescription>
+		<ProductType >Food &#x26; Beverages</ProductType>
+		<Reason >Salmonella</Reason>
+		<Url >
+			https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/safeway-fresh-foods-dba-sunnyside-fresh-vineland-new-jersey-issuing-voluntary-class-1-recall-quick
+		</Url>
+		<Terminated/>
+	</recalls>
+	<recalls Brand="Giant Eagle" Company ="Giant Eagle">
+		<Brand>Giant Eagle</Brand>
+		<Company>Giant Eagle</Company>
+		<Date>05/28/2022</Date>
+		<ProductDescription>Baked items containing peanut butter</ProductDescription>
+		<ProductType>Food &#x26; Beverages</ProductType>
+		<Reason>qSalmonella</Reason>
+		<Url>
+			https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/three-giant-eagle-stores-recall-bakery-items-peanut-butter-due-potential-salmonella-contamination
+		</Url>
+		<Terminated/>
+	</recalls>
+</recallsdata>
