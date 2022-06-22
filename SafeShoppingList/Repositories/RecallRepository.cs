@@ -14,6 +14,7 @@ namespace SafeShoppingList.Repositories
 
             List<string> stringlist = new List<string>();
 
+
             IEnumerable<XNode> elemListBrand = from recalls in doc.Root.Elements("recalls")
                                                where recalls.Element("Brand").Value.Contains(BrandName) && recalls.Element("ProductDescription").Value.Contains(PDescription) && recalls.Element("Company").Value.Contains(Company)
                                                select recalls.Element("Brand");
