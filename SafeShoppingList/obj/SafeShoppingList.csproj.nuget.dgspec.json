@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\johnn\\workspace\\backend\\safeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj": {}
+    "C:\\Users\\johnn\\workspace\\backend\\SafeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\johnn\\workspace\\backend\\safeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj": {
+    "C:\\Users\\johnn\\workspace\\backend\\SafeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\johnn\\workspace\\backend\\safeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj",
+        "projectUniqueName": "C:\\Users\\johnn\\workspace\\backend\\SafeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj",
         "projectName": "SafeShoppingList",
-        "projectPath": "C:\\Users\\johnn\\workspace\\backend\\safeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj",
+        "projectPath": "C:\\Users\\johnn\\workspace\\backend\\SafeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj",
         "packagesPath": "C:\\Users\\johnn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\johnn\\workspace\\backend\\safeShoppingList\\SafeShoppingList\\obj\\",
+        "outputPath": "C:\\Users\\johnn\\workspace\\backend\\SafeShoppingList\\SafeShoppingList\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\johnn\\AppData\\Roaming\\NuGet\\NuGet.Config",

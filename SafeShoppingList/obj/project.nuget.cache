@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MxVJNW/j1I5MYT0k43+E70IV4bhqlL6VL5QdKAd1+RXZA7fY3swq+F+MdT4Ko92+rwBVa2oxWKuiajEPloKfDQ==",
+  "dgSpecHash": "fKAeMD3Y3Ry/GkON9jyvrweqTeklDnnqo7uZTfMw+VmAhbsmIF8jxOejQiAi0olYQT0XSjDjSw28Ayu10jjFTQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\johnn\\workspace\\backend\\safeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj",
+  "projectFilePath": "C:\\Users\\johnn\\workspace\\backend\\SafeShoppingList\\SafeShoppingList\\SafeShoppingList.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\johnn\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\johnn\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
