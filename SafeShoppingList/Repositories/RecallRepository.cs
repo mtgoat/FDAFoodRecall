@@ -13,10 +13,6 @@ namespace SafeShoppingList.Repositories
         {
             XDocument doc = XDocument.Load(@"C:\Users\johnn\workspace\backend\SafeShoppingList\SafeShoppingList\RecallTest.xml");
 
-            ////function? 
-            //SearchResult result1 = new SearchResult();
-            //SearchResult result2 = new SearchResult();
-
             var results = new List<SearchResult>();
 
             IEnumerable<XNode> elemListBrand = from recalls in doc.Root.Elements("recalls")
@@ -34,13 +30,6 @@ namespace SafeShoppingList.Repositories
                 i++;
             }
 
-            foreach (SearchResult result in results)
-            {
-                result.Brand = result.Brand.Replace("<Brand>", "").Replace("</Brand>", "");
-            }
-
-
-
             IEnumerable<XNode> elemListPD = from recalls in doc.Root.Elements("recalls")
                                             where recalls.Element("Brand").Value.Contains(BrandName) && recalls.Element("ProductDescription").Value.Contains(PDescription) && recalls.Element("Company").Value.Contains(Company)
                                             select recalls.Element("ProductDescription");
@@ -53,10 +42,6 @@ namespace SafeShoppingList.Repositories
                 j++;
             }
 
-            foreach (SearchResult result in results)
-            {
-                result.ProductDescription = result.ProductDescription.Replace("<ProductDescription>", "").Replace("</ProductDescription>", "");
-            }
 
             IEnumerable<XNode> elemListComp = from recalls in doc.Root.Elements("recalls")
                                               where recalls.Element("Brand").Value.Contains(BrandName) && recalls.Element("ProductDescription").Value.Contains(PDescription) && recalls.Element("Company").Value.Contains(Company)
@@ -69,12 +54,7 @@ namespace SafeShoppingList.Repositories
                    results[k].Company = element.ToString();
                 k++;
               }
-
-            foreach (SearchResult result in results)
-            {
-                result.Company = result.Company.Replace("<Company>", "").Replace("</Company>", "");
-            }
-
+           
             IEnumerable<XNode> elemListReason = from recalls in doc.Root.Elements("recalls")
                                                 where recalls.Element("Brand").Value.Contains(BrandName) && recalls.Element("ProductDescription").Value.Contains(PDescription) && recalls.Element("Company").Value.Contains(Company)
                                                 select recalls.Element("Reason");
@@ -87,10 +67,6 @@ namespace SafeShoppingList.Repositories
                 l++;
             }
 
-            foreach (SearchResult result in results)
-            {
-                result.Reason = result.Reason.Replace("<Reason>", "").Replace("</Reason>", "");
-            }
 
             IEnumerable<XNode> elemListUrl = from recalls in doc.Root.Elements("recalls")
                                              where recalls.Element("Brand").Value.Contains(BrandName) && recalls.Element("ProductDescription").Value.Contains(PDescription) && recalls.Element("Company").Value.Contains(Company)
@@ -104,10 +80,18 @@ namespace SafeShoppingList.Repositories
                 m++;
             }
 
+
+
+
             foreach (SearchResult result in results)
             {
+                result.Brand = result.Brand.Replace("<Brand>", "").Replace("</Brand>", "");
+                result.ProductDescription = result.ProductDescription.Replace("<ProductDescription>", "").Replace("</ProductDescription>", "");
+                result.Company = result.Company.Replace("<Company>", "").Replace("</Company>", "");
+                result.Reason = result.Reason.Replace("<Reason>", "").Replace("</Reason>", "");
                 result.URL = result.URL.Replace("<Url>\r\n\t\t\t", "").Replace("\r\n\t\t</Url>", "");
             }
+            
             return results;
         }
     }
