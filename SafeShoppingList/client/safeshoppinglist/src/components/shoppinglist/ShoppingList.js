@@ -7,7 +7,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
 
 export default function  ShoppingList  () {
   
@@ -65,6 +64,11 @@ const [results, setResults] = useState([]);
           Promise.all(promises)
           .then(results => {
           results.forEach(result => result.text().then(t => texts.push(t)))
+
+          debugger
+          console.log("texts0", texts[0])
+          console.log(texts[1])
+          console.log(texts[2])
   })
 
 
@@ -87,7 +91,7 @@ const [results, setResults] = useState([]);
  <ListGroup key='md'  className="bigContainer">
         {items.map((itemProp) => (
             
-            <ListGroup.Item >Item Name: {itemProp.name},  Brand: {itemProp.brand}, Company: {itemProp.company}{' '}<img src="skull.jpg" hidden={itemProp.hidden} alt="skull" width="30" height="30"></img>
+            <ListGroup.Item key={itemProp.id} >Item Name: {itemProp.name},  Brand: {itemProp.brand}, Company: {itemProp.company}{' '}<img src="skull.jpg" hidden={itemProp.hidden} alt="skull" width="30" height="30"></img>
            </ListGroup.Item>
        ))} 
        <div className="searchButton">
