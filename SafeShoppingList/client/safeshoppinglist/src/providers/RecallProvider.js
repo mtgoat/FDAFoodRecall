@@ -11,11 +11,8 @@ export const RecallProvider = (props) => {
     const searchRecall = (qBN, qPD, qC) => {
         
         //return fetch(`${apiUrl}/api/Recall/search?BrandName=${qBN}&PDescription=${qPD}Company=${qC}`)
-         return fetch(`https://localhost:44310/api/Recall/search?BrandName=Quick&PDescription=Apple&Company=Safeway`)
-    //    .then((res) => res.json())
-    //  .then(setRecalls);
-     //fetch(`https://localhost:44310/api/Recall/search?BrandName=Quick&PDescription=Apple&Company=Safeway`)
-     .then((res) => res.json())
+         return fetch(`${apiUrl}/api/Recall/search?BrandName=Quick&PDescription=Apple&Company=Safeway`)
+         .then((res) => res.json())
      .then(setRecalls);
     }
  
