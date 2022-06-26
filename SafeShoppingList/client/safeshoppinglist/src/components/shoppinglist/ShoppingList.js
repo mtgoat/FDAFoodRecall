@@ -42,7 +42,7 @@ export default function  ShoppingList  () {
 
   //this is for search
   
-const {searchRecall, recalls} = useContext(RecallContext)
+const {searchRecall, recalls, setRecalls } = useContext(RecallContext)
 
 let texts = [];
 
@@ -67,11 +67,18 @@ let texts = [];
           var promises = urls.map(url => fetch(url));
           
           //promise all - multiple promise and then get all results and then get to the .then part
-          Promise.all(urls.map(u=>fetch(u))).then(responses =>
-            Promise.all(responses.map(res => res.json()))
-        ).then(texts => {
+          Promise.all(promises)
+          .then(responses =>{
+           return Promise.all(responses.map
+            (res => res.json()))
+            })
+            .then(data => {
+              if(data.length !==0){
+                console.log(data.brand)
+              }
           debugger
-            console.log(texts)
+            console.log(data)
+            
         
           // debugger
           // let definedResultArray =[]
