@@ -5,6 +5,16 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 
+export const ResultCard = ({result}) => {
+  return (
+    <>
+    
+    <p>{result.Id}</p>
+    <p>{result.Brand}</p>
+    <p>{result.ProductDescription}</p>
+    </>
+  )
+}
 export const Item = ({itemProp}) => {
 //for the added message
 

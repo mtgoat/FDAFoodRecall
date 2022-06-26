@@ -1,6 +1,7 @@
-import React, {useState, useContext, useEffect } from "react";
+import React, {useState,useContext, useEffect } from "react";
 import { RecallContext } from "../../providers/RecallProvider";
 //import { Item } from "./Item.js";
+//import { ResultCard } from "./Item";
 import Row from 'react-bootstrap/Row'; 
 import './ShoppingList.css';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -40,11 +41,16 @@ export default function  ShoppingList  () {
     }
 
   //this is for search
-  var texts = [];
+  
 const {searchRecall, recalls} = useContext(RecallContext)
-const [q, setQ] = useState("");
-//const [searchParam] = useState(["capital", "name"]);
-const [results, setResults] = useState([]);
+
+let texts = [];
+
+// useEffect(() => {
+//   getAllPostsByHeritageId(1)
+//   .then(setAllHeritagePosts);
+// }, []);
+
 
 
 
@@ -60,24 +66,42 @@ const [results, setResults] = useState([]);
 
           var promises = urls.map(url => fetch(url));
           
-          
-          Promise.all(promises)
-          .then(results => {
-          results.forEach(result => result.text().then(t => texts.push(t)))
-
+          //promise all - multiple promise and then get all results and then get to the .then part
+          Promise.all(urls.map(u=>fetch(u))).then(responses =>
+            Promise.all(responses.map(res => res.json()))
+        ).then(texts => {
           debugger
-          console.log("texts0", texts[0])
-          console.log(texts[1])
-          console.log(texts[2])
-  })
-
-
-          console.log("response", texts)
-
+            console.log(texts)
         
-// console.log(searchedItem)
+          // debugger
+          // let definedResultArray =[]
+          // for(let i=0; i < urls.length; i++){
+          //   if(texts[i]?.length !== 0){
+          //     definedResultArray.push(texts[i])
+          //   }
+          // }
+          // debugger
+          // let check = definedResultArray
+          // let checkone =definedResultArray[0]
+          //   debugger
+          // console.log("this is arry with the result", definedResultArray[0])
+          //           //intersection()  
+             
 
-// setQ(searchedItem)
+          })
+         
+     
+        
+// Set Operations: intersection to get appropriate search result in the list?
+function intersection(setA, setB){
+  let newIntersection = new Set();
+  for (let elem of setB){
+    if(setA.has(elem)){
+      newIntersection.add(elem)
+    }
+  }
+  return newIntersection
+}
 
           }
             
@@ -93,7 +117,13 @@ const [results, setResults] = useState([]);
             
             <ListGroup.Item key={itemProp.id} >Item Name: {itemProp.name},  Brand: {itemProp.brand}, Company: {itemProp.company}{' '}<img src="skull.jpg" hidden={itemProp.hidden} alt="skull" width="30" height="30"></img>
            </ListGroup.Item>
-       ))} 
+       ))}
+
+       {/* this is to test how to access the texts 
+       {dangers.map((one) => (
+  <ResultCard key={one.id}  result={one} />
+))}  */}
+
        <div className="searchButton">
            
             <Button onClick={(e) => handleCheckedButtonClick(e)} > Check</Button>
@@ -133,7 +163,7 @@ const [results, setResults] = useState([]);
       </Form.Group>
       <Button onClick={() => handleAddButtonClick()}> Add this</Button>
      
-      {texts.map((itemProp) => ( <p>itemProp </p>))}
+      {/* {texts.map((itemProp) => ( <p>itemProp </p>))} */}
         </div>
         </>
     );
