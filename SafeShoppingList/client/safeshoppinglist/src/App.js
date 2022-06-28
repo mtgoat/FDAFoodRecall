@@ -3,9 +3,9 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ShoppingList from './components/shoppinglist/ShoppingList.js';
-import Header from "./components/layout/Header.js";
+import Header from './components/layout/Header.js';
 import { RecallProvider } from './providers/RecallProvider.js';
+import {ApplicationViews} from './components/ApplicationViews.js';
 
 export default function App () {
   return (
@@ -13,7 +13,7 @@ export default function App () {
    <Router>
     <RecallProvider>
      < Header />
-     < ShoppingList />
+     < ApplicationViews />
     </RecallProvider>
    </Router>
    </>

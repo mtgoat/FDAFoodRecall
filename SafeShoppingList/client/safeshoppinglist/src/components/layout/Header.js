@@ -9,10 +9,8 @@ export default function Header () {
         <>
         <Navbar collapseOnSelect  bg="secondary" expand="lg" className="header" variant="dark" fixed="top">
             <Container>
-        <Navbar.Brand href="#home">Safe Shopping App</Navbar.Brand>
-        <Nav className="me-auto">
-        <Nav.Link >Shopping List</Nav.Link>
-        </Nav>
+        <Navbar.Brand href="/">Safe Shopping App</Navbar.Brand>
+        
         </Container>
         </Navbar>
         </>

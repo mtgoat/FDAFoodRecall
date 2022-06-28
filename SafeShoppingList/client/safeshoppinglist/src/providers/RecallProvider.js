@@ -6,6 +6,7 @@ export const RecallProvider = (props) => {
 
     const apiUrl = "https://localhost:5001";
     const [recalls, setRecalls] = useState([]);
+    const [details, setDetails] = useState([]);
   
 
     const searchRecall = (qBN, qPD, qC) => {
@@ -29,7 +30,7 @@ export const RecallProvider = (props) => {
     // };
 
     return (
-          <RecallContext.Provider value={{recalls, setRecalls, searchRecall }}>
+          <RecallContext.Provider value={{recalls, setRecalls, searchRecall,details,setDetails }}>
             {props.children}
           </RecallContext.Provider>
     );

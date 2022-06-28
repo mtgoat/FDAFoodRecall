@@ -8,15 +8,18 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
 export default function  ShoppingList  () {
   
 //shopping list
     const [items, setItems ] = useState ([
-    {itemId: 1, name:"Apple", brand: "Quick", company:"Safeway", hidden: true },
+    {itemId: 1, name:"Apple", brand: "Quick", company:"Safeway", hidden: true},
     {itemId: 2, name:"banana", brand: "Doll", company:"Bananas", hidden: true},
     {itemId: 3, name:"cantaloupe", brand: "Scott's Farm", company:"Scott's Farm", hidden: true},
     ]);
+
+
 
     const [inputValueName, setInputValueName] = useState('');
     const [inputValueBrand, setInputValueBrand] = useState('');
@@ -42,9 +45,11 @@ export default function  ShoppingList  () {
 
   //this is for search
   
-const {searchRecall, recalls, setRecalls } = useContext(RecallContext)
+  const {details, setDetails } = useContext(RecallContext);
+const [recalls, setRecalls] = useState([]);
 
 let texts = [];
+let recalled = [];
 
 // useEffect(() => {
 //   getAllPostsByHeritageId(1)
@@ -73,42 +78,69 @@ let texts = [];
             (res => res.json()))
             })
             .then(data => {
-              if(data.length !==0){
-                console.log(data.brand)
-              }
-          debugger
-            console.log(data)
+              data.forEach((oneArray) => {
+                if(oneArray.length !== 0){
+                  return recalled.push(oneArray)
+                }
+              }) 
+              
+          // debugger
+          //   console.log("this is a data", data)
+          //   console.log("this is recalled", recalled)
+          //   console.log("this is recalled.[0]", recalled[0])
+          //    console.log("this is  recalled[0][0].brand", recalled[0][0].brand)
             
-        
-          // debugger
-          // let definedResultArray =[]
-          // for(let i=0; i < urls.length; i++){
-          //   if(texts[i]?.length !== 0){
-          //     definedResultArray.push(texts[i])
-          //   }
-          // }
-          // debugger
-          // let check = definedResultArray
-          // let checkone =definedResultArray[0]
-          //   debugger
-          // console.log("this is arry with the result", definedResultArray[0])
-          //           //intersection()  
-             
+            // setRecalls(recalled[0])
+            // debugger
+            // console.log("this is recalls", recalls)
+            // console.log("this is recalls.[0]", recalls[0])
+            //  console.log("this is recalled.[0][0].brand", recalls[0].brand)
+            //  debugger
+            // find the index in the items that matches the search result that is right now single array to build a simple logic first 
+            
+            let matchedItems = []
+            let indexArray = []
+            let matchedRecalls = []
+            //for loop for recalls? 
+            debugger
+            console.log(recalled[0][0].productDescription.toLowerCase())
+            console.log(items[0].name.toLowerCase()) 
+              
+            for(let i = 0; i < items.length; i++){
+              if(recalled[0][0].brand.toLowerCase().includes (items[i].brand.toLowerCase()) && recalled[0][0].company.toLowerCase().includes (items[i].company.toLowerCase()) && recalled[0][0].productDescription.toLowerCase().includes ( items[i].name.toLowerCase())
+             ){
+
+                matchedItems.push(items[i])
+                indexArray.push(i)
+                debugger
+  
+                //call function to show the skull image using an index
+                indexArray.forEach(index => SkullOn(index) )
+              
+              // get right result for the details
+              debugger
+              console.log(recalled)
+              for(let i = 0; i < recalled.length; i++){
+                
+               setDetails(recalled[i])}
+
+              } else {
+                console.log("no go")
+              }
+            }
 
           })
-         
-     
         
-// Set Operations: intersection to get appropriate search result in the list?
-function intersection(setA, setB){
-  let newIntersection = new Set();
-  for (let elem of setB){
-    if(setA.has(elem)){
-      newIntersection.add(elem)
-    }
-  }
-  return newIntersection
-}
+
+          function SkullOn  (index) {
+            let skullItems =[...items];
+            
+            skullItems[index].hidden = false
+                    
+            setItems(skullItems)
+            // //find a match
+               
+          }
 
           }
             
@@ -120,9 +152,11 @@ function intersection(setA, setB){
 
            
  <ListGroup key='md'  className="bigContainer">
-        {items.map((itemProp) => (
+        {items.map((itemProp, index) => (
             
-            <ListGroup.Item key={itemProp.id} >Item Name: {itemProp.name},  Brand: {itemProp.brand}, Company: {itemProp.company}{' '}<img src="skull.jpg" hidden={itemProp.hidden} alt="skull" width="30" height="30"></img>
+            <ListGroup.Item key={itemProp.id} >Item Name: {itemProp.name},  Brand: {itemProp.brand}, Company: {itemProp.company}{' '}<img src="skull.jpg" hidden={itemProp.hidden} alt="skull" width="30" height="30"></img>{' '}<Link to={`/items/${itemProp.itemId}`} hidden={itemProp.hidden} >
+            <strong hidden={itemProp.hidden}>Details</strong>
+            </Link>
            </ListGroup.Item>
        ))}
 
@@ -170,7 +204,6 @@ function intersection(setA, setB){
       </Form.Group>
       <Button onClick={() => handleAddButtonClick()}> Add this</Button>
      
-      {/* {texts.map((itemProp) => ( <p>itemProp </p>))} */}
         </div>
         </>
     );
